@@ -53,7 +53,7 @@ var app = {
         var gcm_regid = data.registrationId;
         alert(gcm_regid+'gcmid');
 
-    $.ajax({url: 'http://staging.eimpressive.com/slim-four/gcm_id.php?region='+gcm_regid,
+    $.ajax({url: 'http://staging.eimpressive.com/slim-four/gcm_id.php?gcm_regid='+gcm_regid,
   data:$('#new').serialize(),
   type: 'post',                   
   async: 'true',
