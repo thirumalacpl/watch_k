@@ -52,7 +52,7 @@ var app = {
     push.on('registration', function(data) {
         console.log("registration event");
         var gcm_regid = data.registrationId;
-        alert(gcm_regid+'numb');
+        //alert(gcm_regid+'numb');
 
             $.ajax({url: 'http://staging.eimpressive.com/slim-four/gcm_id.php?gcm_regid='+gcm_regid,
   data:$('#new').serialize(),
@@ -72,7 +72,7 @@ var app = {
 sessionStorage.setItem("collectionArray",JSON.stringify(result[0]));
 // alert(region+'refresh new regionArray_array');
 $.mobile.loading().hide();
-alert('reg id page auto success');
+//alert('reg id page auto success');
 //$.mobile.changePage($('#supervisor_list_view'), { transition: "none", changeHash: true, reverse: false });
 }else {
   alert('No Data Found for the search record'); 

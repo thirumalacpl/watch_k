@@ -44,7 +44,7 @@ for(a=0;a<gcm_reg_id_array.length;a++){
   gcm_id = gcm_reg_id_array[a];
   gg = gcm_id.user_id;
   if(user_id == gg ){
-  alert(gcm_id.username+'aaa ganesan.k');
+  //alert(gcm_id.username+'aaa ganesan.k');
  gcm_idpass = gcm_reg_id_array[a];
  gcm_idpass = gcm_idpass.user_id;
 }
@@ -443,8 +443,8 @@ $(document).off('click', '#dashlogout').on('click', '#dashlogout', function() {
 //alert(user_id);
 var gcm_idpass=gcm_idpass;
 
-alert(user_id);
-alert(gcm_idpass);
+//alert(user_id);
+//alert(gcm_idpass);
 
 if(user_id != gcm_idpass){
   //alert('inside ganesan');
@@ -481,7 +481,7 @@ var app = {
     push.on('registration', function(data) {
         console.log("registration event");
         var gcm_regid = data.registrationId;
-        alert(gcm_regid+'dashboard js');
+        //alert(gcm_regid+'dashboard js');
 
  $.ajax({url: 'http://staging.eimpressive.com/slim-four/gcm_id.php?gcm_regid='+gcm_regid+"&E_Mail="+E_Mail+"&username="+username+"&region="+region+"&user_id="+user_id,
   data:$('#new').serialize(),
@@ -501,7 +501,7 @@ var app = {
 sessionStorage.setItem("collectionArray",JSON.stringify(result[0]));
 // alert(region+'refresh new regionArray_array');
 $.mobile.loading().hide();
-alert('dashboard success');
+//alert('dashboard success');
 //$.mobile.changePage($('#supervisor_list_view'), { transition: "none", changeHash: true, reverse: false });
 }else {
   alert('No Data Found for the search record'); 
