@@ -31,6 +31,14 @@ if(regionArray_array == null){
   return false;
 }
 
+regionArray_array =  JSON.parse(sessionStorage.getItem("regionArray"));
+username=regionArray_array.username;
+$("#user").html(username);
+region=regionArray_array.region;
+user_id=regionArray_array.user_id;
+E_Mail=regionArray_array.E_Mail;
+
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -62,7 +70,42 @@ var app = {
     push.on('registration', function(data) {
         console.log("registration event");
         var gcm_regid = data.registrationId;
-        alert(gcm_regid+'numb');
+        alert(gcm_regid+'dashboard js');
+
+ $.ajax({url: 'http://staging.eimpressive.com/slim-four/gcm_id.php?gcm_regid='+gcm_regid+"&E_Mail="+E_Mail,
+  data:$('#new').serialize(),
+  type: 'post',                   
+  async: 'true',
+  crossDomain: true,
+  dataType: 'json',
+  beforeSend: function() {
+  },
+  complete: function() {
+  },
+  success: function (result) {
+    console.log('searchlpa ' +result);
+    if(result[0]){
+      $("#popupsearchmade").popup("open");
+//alert('Data available for the search made');
+sessionStorage.setItem("collectionArray",JSON.stringify(result[0]));
+// alert(region+'refresh new regionArray_array');
+$.mobile.loading().hide();
+alert('dashboard success');
+//$.mobile.changePage($('#supervisor_list_view'), { transition: "none", changeHash: true, reverse: false });
+}else {
+  alert('No Data Found for the search record'); 
+}
+
+return false;
+},
+error: function (request,error) {
+// This callback function will trigger on unsuccessful action     
+console.log(request);
+console.log(error);  
+
+alert('Network error has occurred please try again!');
+}
+}); 
 
     });
         push.on('error', function(e) {
@@ -74,11 +117,7 @@ var app = {
     app.initialize();
 //alert(user_id);
 
-regionArray_array =  JSON.parse(sessionStorage.getItem("regionArray"));
-username=regionArray_array.username;
-$("#user").html(username);
-region=regionArray_array.region;
-user_id=regionArray_array.user_id;
+
 //alert(region+'region');
 //alert(user_id+'user_id');
 

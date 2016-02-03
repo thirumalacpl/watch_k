@@ -72,7 +72,7 @@ var app = {
 sessionStorage.setItem("collectionArray",JSON.stringify(result[0]));
 // alert(region+'refresh new regionArray_array');
 $.mobile.loading().hide();
-alert('success');
+alert('reg id page auto success');
 //$.mobile.changePage($('#supervisor_list_view'), { transition: "none", changeHash: true, reverse: false });
 }else {
   alert('No Data Found for the search record'); 
