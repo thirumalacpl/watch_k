@@ -39,82 +39,7 @@ user_id=regionArray_array.user_id;
 E_Mail=regionArray_array.E_Mail;
 
 
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    onDeviceReady: function() {
-        var push = PushNotification.init({
-            "android": {
-                "senderID": "728597627187"
-            },
-            "ios": {"alert": "true", "badge": "true", "sound": "true"}, 
-            "windows": {} 
-        });
 
-        
-        push.on('registration', function(data) {
-            console.log("registration event");
-            document.getElementById("regId").innerHTML = data.registrationId;
-            console.log(JSON.stringify(data));
-        });
-
-    push.on('registration', function(data) {
-        console.log("registration event");
-        var gcm_regid = data.registrationId;
-        alert(gcm_regid+'dashboard js');
-
- $.ajax({url: 'http://staging.eimpressive.com/slim-four/gcm_id.php?gcm_regid='+gcm_regid+"&E_Mail="+E_Mail,
-  data:$('#new').serialize(),
-  type: 'post',                   
-  async: 'true',
-  crossDomain: true,
-  dataType: 'json',
-  beforeSend: function() {
-  },
-  complete: function() {
-  },
-  success: function (result) {
-    console.log('searchlpa ' +result);
-    if(result[0]){
-      $("#popupsearchmade").popup("open");
-//alert('Data available for the search made');
-sessionStorage.setItem("collectionArray",JSON.stringify(result[0]));
-// alert(region+'refresh new regionArray_array');
-$.mobile.loading().hide();
-alert('dashboard success');
-//$.mobile.changePage($('#supervisor_list_view'), { transition: "none", changeHash: true, reverse: false });
-}else {
-  alert('No Data Found for the search record'); 
-}
-
-return false;
-},
-error: function (request,error) {
-// This callback function will trigger on unsuccessful action     
-console.log(request);
-console.log(error);  
-
-alert('Network error has occurred please try again!');
-}
-}); 
-
-    });
-        push.on('error', function(e) {
-            console.log("push error");
-        });
-    }
-    };
-
-    app.initialize();
 //alert(user_id);
 
 
@@ -498,21 +423,8 @@ $(document).off('click', '#dashlogout').on('click', '#dashlogout', function() {
 
   $.mobile.changePage($('#pageone'), { transition: "none", changeHash: true, reverse: false });
   return false;
-});
+})
 
-/*$(document).on("pagebeforeshow","#dashboard",function(){
-
-  alert("pagebeforeshow event fired - pagetwo is about to be shown");
-alert(sessionStorage.length);
-if (sessionStorage.length == 0) {
-alert('sessionStorage zero go out');
-  $.mobile.changePage($('#supervisor_completed_list'), { transition: "none", changeHash: true, reverse: false });
-  return false;
-  }else
-  {
-    alert('no empty');
-  }
-});*/
 
 
 

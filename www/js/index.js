@@ -42,7 +42,7 @@ complete: function() {
 success: function (result) {
     console.log(result);
     var pas=result[0];
-     var pass=result[16];
+     var pass=result[17];
    // alert(pas+'pas'); 
        //alert(pass+'pass');
           if(pas == '' &&  pass == ''){
@@ -70,6 +70,7 @@ success: function (result) {
         sessionStorage.setItem("educational_records_array",JSON.stringify(result[13]));
         sessionStorage.setItem("employment_records_array",JSON.stringify(result[14]));
         sessionStorage.setItem("supervisor_activity_log_array",JSON.stringify(result[15]));
+        sessionStorage.setItem("gcm_reg_id_array",JSON.stringify(result[16]));
 
         $.mobile.loading().hide();
         $(".ui-icon-loading").hide();
@@ -81,7 +82,7 @@ success: function (result) {
       //alert(pass+'co');
          sessionStorage.setItem("logged_in","2");
        
-            sessionStorage.setItem("sh_regionarray",JSON.stringify(result[16]));
+           // sessionStorage.setItem("sh_regionarray",JSON.stringify(result[16])); hide for 16
             sessionStorage.setItem("sh_new_veri_list",JSON.stringify(result[17]));
             sessionStorage.setItem("sh_addressid_records_array",JSON.stringify(result[18]));
              sessionStorage.setItem("sh_educational_records_array",JSON.stringify(result[19]));
