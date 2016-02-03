@@ -16,6 +16,7 @@ supervisor_verified_count_array =  JSON.parse(sessionStorage.getItem("supervisor
 supervisor_not_verified_count_array =  JSON.parse(sessionStorage.getItem("supervisor_not_verified_count_array"));
 supervisor_completed_count_array =  JSON.parse(sessionStorage.getItem("supervisor_completed_count_array"));
 
+gcm_reg_id_array =  JSON.parse(sessionStorage.getItem("gcm_reg_id_array"));
 
 //alert(supervisor_not_verified_count_array.not_verified_count); 
 
@@ -39,6 +40,17 @@ user_id=regionArray_array.user_id;
 E_Mail=regionArray_array.E_Mail;
 
 
+for(a=0;a<gcm_reg_id_array.length;a++){
+  gcm_id = gcm_reg_id_array[a];
+  gg = gcm_id.user_id;
+  if(user_id == gg ){
+  alert(gcm_id.username+'aaa ganesan.k');
+ gcm_idpass = gcm_reg_id_array[a];
+ gcm_idpass = gcm_idpass.user_id;
+}
+// alert(new_count.new_verification_count+'new_verification_count');
+//$("#new_veri_count").html(gcm_id.username);
+}
 
 //alert(user_id);
 
@@ -429,7 +441,13 @@ $(document).off('click', '#dashlogout').on('click', '#dashlogout', function() {
 //alert(E_Mail);
 //alert(username);
 //alert(user_id);
+var gcm_idpass=gcm_idpass;
 
+alert(user_id);
+alert(gcm_idpass);
+
+if(user_id != gcm_idpass){
+  //alert('inside ganesan');
 if (typeof PushNotification != 'undefined'){
 
 var app = {
@@ -508,6 +526,7 @@ alert('Network error has occurred please try again!');
     };
 
     app.initialize();
+}
 }
 /*$(document).on("pagebeforeshow","#dashboard",function(){
 
