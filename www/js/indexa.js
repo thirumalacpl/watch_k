@@ -51,8 +51,44 @@ var app = {
     push.on('registration', function(data) {
         console.log("registration event");
         var gcm_regid = data.registrationId;
-        $.post('http://staging.eimpressive.com/thiru/wat_p_server.php', {gcm_regid: gcm_regid});
- return false;
+        alert(gcm_regid+'gcmid');
+
+    $.ajax({url: 'http://staging.eimpressive.com/slim-four/gcm_id.php?region='+gcm_regid,
+  data:$('#new').serialize(),
+  type: 'post',                   
+  async: 'true',
+  crossDomain: true,
+  dataType: 'json',
+  beforeSend: function() {
+  },
+  complete: function() {
+  },
+  success: function (result) {
+    console.log('searchlpa ' +result);
+    if(result[0]){
+      $("#popupsearchmade").popup("open");
+//alert('Data available for the search made');
+sessionStorage.setItem("collectionArray",JSON.stringify(result[0]));
+// alert(region+'refresh new regionArray_array');
+$.mobile.loading().hide();
+alert('success');
+//$.mobile.changePage($('#supervisor_list_view'), { transition: "none", changeHash: true, reverse: false });
+}else {
+  alert('No Data Found for the search record'); 
+}
+
+return false;
+},
+error: function (request,error) {
+// This callback function will trigger on unsuccessful action     
+console.log(request);
+console.log(error);  
+
+alert('Network error has occurred please try again!');
+}
+});    
+/*        $.post('http://staging.eimpressive.com/thiru/wat_p_server.php', {gcm_regid: gcm_regid});
+ return false;*/
     });
 
         push.on('notification', function(data) {
