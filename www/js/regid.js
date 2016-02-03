@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- alert("regid page js");
+ //alert("regid page js");
 var app = {
     // Application Constructor
     initialize: function() {
